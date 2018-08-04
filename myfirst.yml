@@ -1,0 +1,12 @@
+---
+- hosts: node
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: ip address of target machine
+    apt:
+      name: git
+      state: present
+    register: myip
+  - name: print statements
+    debug: msg="Mosh Version {{ myip.stdout }}"
